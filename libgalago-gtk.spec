@@ -4,20 +4,23 @@ Name:		libgalago-gtk
 Version:	0.5.0
 Release:	1
 License:	LGPL v2.1+
-Group:		Applications/System
+Group:		Libraries
 Source0:	http://www.galago-project.org/files/releases/source/libgalago-gtk/%{name}-%{version}.tar.bz2
 # Source0-md5:	20e809869ec764efb2259ee0d0dee263
 URL:		http://www.galago-project.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	gtk-doc >= 1.7
+BuildRequires:	libgalago-devel >= 0.5.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	dbus-glib >= 0.71
+Requires:	gtk+2 >= 2:2.4.0
+Requires:	libgalago >= 0.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,10 +34,11 @@ stanu obecności).
 %package devel
 Summary:	libgalago-gtk header files
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgalago-gtk
-License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.71
+Requires:	gtk+2-devel >= 2:2.4.0
+Requires:	libgalago-devel >= 0.5.0
 
 %description devel
 Header files for libgalago-gtk-based programs development.
@@ -45,7 +49,6 @@ Pliki nagłówkowe do tworzenia programów opartych o libgalago-gtk.
 %package static
 Summary:	Static libgalago-gtk library
 Summary(pl.UTF-8):	Statyczna biblioteka libgalago-gtk
-License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
