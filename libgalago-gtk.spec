@@ -1,5 +1,5 @@
-Summary:	Galago GTK library
-Summary(pl.UTF-8):	Biblioteka Galago dla GTK
+Summary:	Galago GTK+ library
+Summary(pl.UTF-8):	Biblioteka Galago dla GTK+
 Name:		libgalago-gtk
 Version:	0.5.0
 Release:	1
@@ -37,10 +37,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.71
 
 %description devel
-Header files for libgalago-based programs development.
+Header files for libgalago-gtk-based programs development.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe do tworzenia programów opartych o libgalago.
+Pliki nagłówkowe do tworzenia programów opartych o libgalago-gtk.
 
 %package static
 Summary:	Static libgalago-gtk library
@@ -98,8 +98,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_pkgconfigdir}/*
 %{_includedir}/*
+%{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
