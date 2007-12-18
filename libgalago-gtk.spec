@@ -64,7 +64,7 @@ Statyczna biblioteka libgalago-gtk.
 %build
 %{__glib_gettextize}
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__gettextize}
