@@ -94,16 +94,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgalago-gtk.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgalago-gtk.so.1
 %{_pixmapsdir}/galago
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_pkgconfigdir}/*
+%attr(755,root,root) %{_libdir}/libgalago-gtk.so
+%{_libdir}/libgalago-gtk.la
+%{_includedir}/libgalago-gtk
+%{_pkgconfigdir}/libgalago-gtk.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgalago-gtk.a
