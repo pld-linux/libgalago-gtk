@@ -62,14 +62,13 @@ Statyczna biblioteka libgalago-gtk.
 %setup -q
 
 %build
+cp /usr/share/gettext/config.rpath .
 %{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
-%{__gettextize}
 %{__automake}
-
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
