@@ -2,7 +2,7 @@ Summary:	Galago GTK+ library
 Summary(pl.UTF-8):	Biblioteka Galago dla GTK+
 Name:		libgalago-gtk
 Version:	0.5.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.galago-project.org/files/releases/source/libgalago-gtk/%{name}-%{version}.tar.bz2
