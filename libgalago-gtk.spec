@@ -2,7 +2,7 @@ Summary:	Galago GTK+ library
 Summary(pl.UTF-8):	Biblioteka Galago dla GTK+
 Name:		libgalago-gtk
 Version:	0.5.0
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.galago-project.org/files/releases/source/libgalago-gtk/%{name}-%{version}.tar.bz2
@@ -15,7 +15,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	libgalago-devel >= 0.5.0
+BuildRequires:	libgalago-devel >= 0.5.2-2
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	dbus-glib >= 0.71
@@ -38,7 +38,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.71
 Requires:	gtk+2-devel >= 2:2.4.0
-Requires:	libgalago-devel >= 0.5.0
+Requires:	libgalago-devel >= 0.5.2-2
 
 %description devel
 Header files for libgalago-gtk-based programs development.
@@ -80,7 +80,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/autopackage
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/autopackage
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgalago-gtk.la
 
 %find_lang %{name}
 
@@ -100,7 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgalago-gtk.so
-%{_libdir}/libgalago-gtk.la
 %{_includedir}/libgalago-gtk
 %{_pkgconfigdir}/libgalago-gtk.pc
 
