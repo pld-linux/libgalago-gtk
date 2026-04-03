@@ -2,7 +2,7 @@ Summary:	Galago GTK+ library
 Summary(pl.UTF-8):	Biblioteka Galago dla GTK+
 Name:		libgalago-gtk
 Version:	0.5.0
-Release:	3
+Release:	5
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.galago-project.org/files/releases/source/libgalago-gtk/%{name}-%{version}.tar.bz2
@@ -61,6 +61,16 @@ Statyczna biblioteka libgalago-gtk.
 %prep
 %setup -q
 
+# replace AM_GNU_GETTEXT macros with AM_GLIB_GNU_GETTEXT (glib variant)
+%{__sed} -i -e '/AM_GNU_GETTEXT_VERSION/d' -e 's/AM_GNU_GETTEXT$/AM_GLIB_GNU_GETTEXT/' configure.ac
+# remove bundled intl dir (not needed with glib-gettext)
+%{__sed} -i -e '/intl\/Makefile/d' configure.ac
+%{__sed} -i -e 's/ intl//' Makefile.am
+# disable BR_GTHREADS - uses removed GStaticPrivate GLib API
+%{__sed} -i -e 's/define BR_GTHREADS 1/define BR_GTHREADS 0/' libgalago-gtk/prefix.c
+# fix incompatible pointer type (GalagoCore* vs GalagoObject*)
+%{__sed} -i -e 's/GalagoObject \*core;/GalagoCore *core;/' libgalago-gtk/galago-gtk-service-combo-box.c
+
 %build
 cp /usr/share/gettext/config.rpath .
 %{__glib_gettextize}
@@ -70,7 +80,6 @@ cp /usr/share/gettext/config.rpath .
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
